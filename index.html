@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fryday – FRIES TO LOVE, FLAVORS TO SHARE</title>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fry-red: #DE3535;
+    --fry-accent: #B82A2A;
+    --fry-dark: #2A1711;
+    --fry-cream: #FCF9F5;
+    --smoke: #5C4A44;
+    --white: #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--fry-cream);
+    color: var(--fry-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 6vw;
+    height: 70px;
+    background: var(--fry-cream);
+    border-bottom: 2px solid rgba(42, 23, 17, 0.1);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .nav-logo-img {
+    height: 150px; 
+    width: auto;
+    object-fit: contain;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--fry-dark); font-weight: 800; font-size: .9rem;
+    text-decoration: none; letter-spacing: .5px; text-transform: uppercase;
+    position: relative; padding-bottom: 2px;
+    transition: color .2s;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--fry-red);
+    transition: width .3s;
+  }
+  .nav-links a:hover { color: var(--fry-red); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--fry-red); color: var(--white);
+    font-weight: 900; font-size: .85rem; padding: .5rem 1.2rem;
+    border-radius: 50px; text-decoration: none; text-transform: uppercase;
+    letter-spacing: .5px;
+    transition: background .2s, transform .2s;
+  }
+  .nav-cta:hover { background: var(--fry-accent); transform: scale(1.05); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { display: block; width: 26px; height: 3px; background: var(--fry-dark); border-radius: 2px; transition: .3s; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    padding-top: 70px;
+    background: var(--fry-cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(222, 53, 53, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(42, 23, 17, 0.03) 0%, transparent 45%);
+  }
+
+  .hero-text {
+    position: relative; z-index: 2;
+    padding: 6vw 5vw 6vw 8vw;
+  }
+
+  .hero-title {
+    font-family: 'Boogaloo', cursive;
+    font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+    line-height: 1.05;
+    color: var(--fry-red);
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    animation: fadeUp .6s ease both;
+  }
+  .hero-title .accent { color: var(--fry-dark); }
+
+  .hero-sub {
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    color: var(--smoke);
+    font-weight: 600;
+    line-height: 1.6;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp .6s .1s ease both;
+  }
+
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp .6s .2s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--fry-red); color: var(--white);
+    font-weight: 900; font-size: 1rem; padding: .85rem 1.8rem;
+    border-radius: 50px; text-decoration: none;
+    box-shadow: 0 8px 24px rgba(222, 53, 53, 0.3);
+    transition: transform .2s, box-shadow .2s, background .2s;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(222, 53, 53, 0.4); background: var(--fry-accent); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: transparent; color: var(--fry-dark);
+    font-weight: 800; font-size: 1rem; padding: .85rem 1.8rem;
+    border-radius: 50px; text-decoration: none;
+    border: 2px solid rgba(42, 23, 17, 0.2);
+    transition: border-color .2s, color .2s;
+  }
+  .btn-secondary:hover { border-color: var(--fry-red); color: var(--fry-red); }
+
+  .hero-visual {
+    position: relative; z-index: 2;
+    display: flex; justify-content: center; align-items: center;
+    padding: 4rem 4vw;
+    animation: fadeUp .7s .1s ease both;
+  }
+
+  .hero-logo-large {
+    width: min(800px, 85vw); /* REVISI: Diperlebar agar proporsional dengan ruang kosong */
+    height: auto;
+    filter: drop-shadow(0 24px 48px rgba(42, 23, 17, 0.15));
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .hero-stat-chips {
+    position: absolute;
+    bottom: 2rem; right: -1rem;
+    display: flex; flex-direction: column; gap: .6rem;
+  }
+
+  .stat-chip {
+    background: var(--white);
+    border: 2px solid var(--fry-dark);
+    border-radius: 50px;
+    padding: .5rem 1rem;
+    color: var(--fry-dark); font-size: .8rem; font-weight: 800;
+    white-space: nowrap;
+    display: flex; align-items: center; gap: .4rem;
+    box-shadow: 4px 4px 0 rgba(42, 23, 17, 1);
+  }
+  .stat-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--fry-red); }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 6rem 6vw; }
+  .section-label {
+    display: inline-block;
+    font-size: .75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 3px;
+    color: var(--fry-red);
+    margin-bottom: .75rem;
+  }
+  .section-title {
+    font-family: 'Boogaloo', cursive;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    color: var(--fry-dark);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .section-sub {
+    font-size: 1.05rem; color: var(--smoke);
+    max-width: 560px; line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* ── PRODUCTS ── */
+  #products { background: var(--white); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .product-card {
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--fry-cream);
+    border: 2px solid rgba(42, 23, 17, 0.1);
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+    cursor: pointer;
+  }
+  .product-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--fry-red);
+    box-shadow: 0 20px 48px rgba(222, 53, 53, 0.15);
+  }
+
+  .product-img {
+    width: 100%; aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: #F5EFEB;
+    border-bottom: 2px solid rgba(42, 23, 17, 0.1);
+  }
+
+  .product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .product-badge {
+    position: absolute; top: 12px; right: 12px;
+    background: var(--fry-dark); color: var(--white);
+    font-size: .7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;
+    padding: .3rem .7rem; border-radius: 50px;
+    z-index: 1;
+  }
+  .product-badge.hot { background: var(--fry-red); }
+
+  .product-info { padding: 1.4rem 1.5rem 1.6rem; }
+  .product-name {
+    font-family: 'Boogaloo', cursive;
+    font-size: 1.5rem; color: var(--fry-dark);
+    margin-bottom: .35rem;
+    text-transform: uppercase;
+  }
+  .product-desc { font-size: .9rem; color: var(--smoke); line-height: 1.6; margin-bottom: 1rem; }
+  .product-footer { display: flex; align-items: center; justify-content: flex-end; }
+  .product-order {
+    background: var(--fry-dark); color: var(--white);
+    font-size: .8rem; font-weight: 900; text-transform: uppercase; letter-spacing: .5px;
+    padding: .45rem 1rem; border-radius: 50px;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .product-order:hover { background: var(--fry-red); transform: scale(1.05); }
+
+  /* ── EVENTS ── */
+  #events {
+    background: var(--fry-dark);
+    position: relative; overflow: hidden;
+  }
+  #events .section-title { color: var(--fry-cream); }
+  #events .section-sub { color: rgba(252, 249, 245, 0.7); }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    position: relative; z-index: 1;
+  }
+
+  .package-card {
+    border-radius: 24px;
+    border: 2px solid rgba(252, 249, 245, 0.15);
+    padding: 2rem 1.75rem;
+    background: rgba(252, 249, 245, 0.03);
+    transition: border-color .3s, background .3s, transform .3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .package-card.featured {
+    border-color: var(--fry-red);
+    background: rgba(222, 53, 53, 0.08);
+  }
+  .package-card:hover {
+    border-color: var(--fry-red);
+    transform: translateY(-6px);
+  }
+
+  .package-featured-tag {
+    position: absolute; top: 0; right: 0;
+    background: var(--fry-red); color: var(--white);
+    font-size: .7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;
+    padding: .35rem .9rem;
+    border-radius: 0 22px 0 16px;
+  }
+
+  .package-pax {
+    font-family: 'Boogaloo', cursive;
+    font-size: 2rem;
+    color: var(--fry-cream); 
+    line-height: 1.1;
+    margin-bottom: .25rem;
+  }
+  .package-label { color: rgba(252, 249, 245, 0.6); font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.25rem; }
+
+  .package-features { list-style: none; margin-bottom: 1.75rem; }
+  .package-features li {
+    color: rgba(252, 249, 245, 0.85); font-size: .9rem;
+    padding: .45rem 0;
+    border-bottom: 1px solid rgba(252, 249, 245, 0.1);
+    display: flex; align-items: flex-start; gap: .6rem;
+  }
+  .package-features li::before { content: '✓'; color: var(--fry-red); font-weight: 900; }
+
+  .btn-quote {
+    display: block; text-align: center;
+    background: var(--fry-cream); color: var(--fry-dark);
+    font-weight: 900; font-size: .9rem; padding: .8rem 1.5rem;
+    border-radius: 50px; text-decoration: none;
+    transition: background .2s, transform .2s;
+  }
+  .btn-quote:hover { background: #fff; transform: scale(1.03); }
+  .package-card.featured .btn-quote { background: var(--fry-red); color: var(--white); }
+  .package-card.featured .btn-quote:hover { background: var(--fry-accent); }
+
+  .events-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+    position: relative; z-index: 1;
+  }
+  .benefit-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    color: rgba(252, 249, 245, 0.8);
+  }
+  .benefit-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    width: 54px; height: 54px;
+    background: rgba(222, 53, 53, 0.15);
+    border: 1px solid rgba(222, 53, 53, 0.3);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .benefit-title { font-weight: 800; font-size: .95rem; color: var(--fry-cream); margin-bottom: .2rem; }
+  .benefit-desc { font-size: .85rem; line-height: 1.5; }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--white);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5vw; align-items: start;
+  }
+
+  .contact-info { padding-top: 1rem; }
+  .contact-tagline {
+    font-family: 'Boogaloo', cursive;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--fry-dark); line-height: 1.2;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+  }
+  .contact-tagline span { color: var(--fry-red); }
+
+  .contact-text { font-size: .95rem; color: var(--smoke); line-height: 1.7; margin-bottom: 2rem; }
+
+  .contact-methods { display: flex; flex-direction: column; gap: .85rem; }
+  .contact-method {
+    display: flex; align-items: center; gap: .75rem;
+    color: var(--fry-dark); text-decoration: none;
+    font-weight: 800; font-size: .95rem;
+    padding: .9rem 1.25rem;
+    border-radius: 16px;
+    border: 2px solid var(--fry-cream);
+    background: var(--fry-cream);
+    transition: border-color .2s, background .2s;
+  }
+  .contact-method:hover { border-color: var(--fry-red); background: #FFF3F3; }
+  .contact-method .method-icon { font-size: 1.5rem; }
+
+  .contact-form {
+    background: var(--fry-dark);
+    border-radius: 28px;
+    padding: 2.5rem 2.25rem;
+  }
+  .contact-form h3 {
+    font-family: 'Boogaloo', cursive;
+    font-size: 1.6rem; color: var(--fry-cream);
+    margin-bottom: .35rem;
+    text-transform: uppercase;
+  }
+  .contact-form p { color: rgba(252, 249, 245, 0.6); font-size: .85rem; margin-bottom: 1.75rem; }
+
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block; font-weight: 800; font-size: .8rem;
+    text-transform: uppercase; letter-spacing: .8px;
+    color: rgba(252, 249, 245, 0.7); margin-bottom: .5rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-size: .95rem; font-weight: 600;
+    padding: .8rem 1.1rem;
+    transition: border-color .2s, background .2s;
+    outline: none;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255, 255, 255, 0.3); }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--fry-red);
+    background: rgba(222, 53, 53, 0.05);
+  }
+  .form-group select option { background: var(--fry-dark); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--fry-red); color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900; font-size: 1rem;
+    padding: .9rem;
+    border: none; border-radius: 50px;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+    margin-top: .5rem;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+  }
+  .btn-submit:hover { background: var(--fry-accent); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--fry-cream);
+    padding: 3rem 6vw;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+    gap: 1.5rem;
+    border-top: 2px solid rgba(42, 23, 17, 0.1);
+  }
+  .footer-logo-img { height: 150px; width: auto; }
+  .footer-copy { color: var(--smoke); font-size: .85rem; font-weight: 600; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: var(--fry-dark); text-decoration: none; font-size: .85rem; font-weight: 800; transition: color .2s; }
+  .footer-links a:hover { color: var(--fry-red); }
+
+  /* ── STICKY WHATSAPP ── */
+  .wa-sticky {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+    width: 60px; height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 24px rgba(37,211,102,.5);
+    text-decoration: none;
+    animation: pulse-wa 2.5s ease-in-out infinite;
+    transition: transform .2s;
+  }
+  .wa-sticky:hover { transform: scale(1.12); }
+  .wa-sticky svg { width: 32px; height: 32px; fill: #fff; }
+  .wa-tooltip {
+    position: absolute; right: 72px;
+    background: var(--fry-dark); color: #fff;
+    font-weight: 800; font-size: .8rem;
+    padding: .45rem .9rem; border-radius: 50px;
+    white-space: nowrap;
+    opacity: 0; pointer-events: none;
+    transition: opacity .2s;
+  }
+  .wa-sticky:hover .wa-tooltip { opacity: 1; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-18px); }
+  }
+  @keyframes pulse-wa {
+    0%, 100% { box-shadow: 0 8px 24px rgba(37,211,102,.5); }
+    50%       { box-shadow: 0 8px 40px rgba(37,211,102,.8); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; text-align: center; }
+    .hero-text { padding: 5vw 6vw 2vw; }
+    .hero-sub { margin: 0 auto 2rem; }
+    .hero-btns { justify-content: center; }
+    .hero-visual { padding: 2rem 6vw 5vw; }
+    .hero-stat-chips { right: 10%; }
+    #contact { grid-template-columns: 1fr; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 4rem 5vw; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+    .package-pax { font-size: 2.2rem; } 
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <img src="./asset/logo no bg.png" alt="Fryday Logo" class="nav-logo-img">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">Menu</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="https://wa.me/628111407273?text=Hi+Fryday!+I'd+like+to+order" target="_blank">Order Now</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+
+  <div class="hero-text">
+    <h1 class="hero-title">Loaded Fries for<br>Your <span class="accent">Events</span></h1>
+    <p class="hero-sub">Generous portions, bold flavors, perfect for every gathering. Secure your spot for our upcoming launch.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="https://wa.me/628111407273?text=Hi+Fryday!+I'd+like+to+inquire+about+pre-orders" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
+      <a class="btn-secondary" href="#events">View Event Packages</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <img src="./asset/logo no bg.png" alt="Fryday Visual" class="hero-logo-large">
+    <div class="hero-stat-chips">
+      <div class="stat-chip"><span class="dot"></span> Freshly Made to Order</div>
+      <div class="stat-chip"><span class="dot"></span> Premium Ingredients</div>
+      <div class="stat-chip"><span class="dot"></span> Limited Daily Slots</div>
+    </div>
+  </div>
+</section>
+
+<section id="products">
+  <div class="reveal">
+    <span class="section-label">Our Menu</span>
+    <h2 class="section-title">Pick Your Packet 🍟</h2>
+    <p class="section-sub">Setiap paket disajikan segar sesuai pesanan. Pilih paket yang paling cocok dengan selera acaramu.</p>
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="./asset/classic menu.png" alt="Classic Fries">
+        <span class="product-badge">Basic</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Classic Fries</div>
+        <p class="product-desc">Kentang goreng renyah keemasan yang disajikan murni dengan pilihan saus khas Fryday. Sederhana namun adiktif.</p>
+        <div class="product-footer">
+          <a class="product-order" href="https://wa.me/628111407273?text=Hi!+I+want+to+order+Classic+Fries" target="_blank">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="./asset/chick menu.png" alt="Fries and Chick">
+        <span class="product-badge hot">Best Seller</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Fries & Chick</div>
+        <p class="product-desc">Kombinasi mengenyangkan antara kentang goreng hangat dan potongan ayam renyah, disiram dengan saus pilihan.</p>
+        <div class="product-footer">
+          <a class="product-order" href="https://wa.me/628111407273?text=Hi!+I+want+to+order+Fries+%26+Chick" target="_blank">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="./asset/beef menu.png" alt="BBQ Meat Fries">
+        <span class="product-badge">Premium</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">BBQ Meat Fries</div>
+        <p class="product-desc">Porsi mewah dengan tumpukan kentang goreng yang dilumuri saus dan daging sapi cincang berbumbu BBQ pekat.</p>
+        <div class="product-footer">
+          <a class="product-order" href="https://wa.me/628111407273?text=Hi!+I+want+to+order+BBQ+Meat+Fries" target="_blank">Order</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="reveal" style="position:relative;z-index:1">
+    <span class="section-label" style="color:var(--fry-red)">Corporate & Bulk Orders</span>
+    <h2 class="section-title">Feed the Whole Crowd 🎉</h2>
+    <p class="section-sub">Merencanakan acara? Serahkan urusan camilan pada kami. Pilih tipe paket menu dan kami akan sesuaikan porsinya untuk acaramu.</p>
+  </div>
+
+  <div class="packages-grid">
+    <div class="package-card reveal">
+      <div class="package-pax" style="font-size: 2rem;">Classic</div>
+      <div class="package-label">Event Package</div>
+      <ul class="package-features">
+        <li>Kentang Goreng Klasik</li>
+        <li>1 Pilihan Saus Signature</li>
+        <li>Standar Event Packaging</li>
+        <li>Cocok untuk camilan ringan</li>
+      </ul>
+      <a class="btn-quote" href="https://wa.me/628111407273?text=Hi+Fryday!+I'd+like+to+request+a+quote+for+the+Classic+Event+Package" target="_blank">Request Quote</a>
+    </div>
+
+    <div class="package-card featured reveal">
+      <div class="package-featured-tag">⭐ Most Popular</div>
+      <div class="package-pax" style="font-size: 2rem;">Fries & Chick</div>
+      <div class="package-label">Event Package</div>
+      <ul class="package-features">
+        <li>Kentang Goreng + Ayam Renyah</li>
+        <li>Pilihan Saus Signature</li>
+        <li>Opsi Custom Kemasan</li>
+        <li>Lebih mengenyangkan</li>
+      </ul>
+      <a class="btn-quote" href="https://wa.me/628111407273?text=Hi+Fryday!+I'd+like+to+request+a+quote+for+the+Fries+%26+Chick+Event+Package" target="_blank">Request Quote</a>
+    </div>
+
+    <div class="package-card reveal">
+      <div class="package-pax" style="font-size: 2rem;">BBQ Meat</div>
+      <div class="package-label">Event Package</div>
+      <ul class="package-features">
+        <li>Kentang + Daging Cincang BBQ</li>
+        <li>Saus Signature Premium</li>
+        <li>Prioritas Antrean Eksekusi</li>
+        <li>Pengalaman rasa maksimal</li>
+      </ul>
+      <a class="btn-quote" href="https://wa.me/628111407273?text=Hi+Fryday!+I'd+like+to+request+a+quote+for+the+BBQ+Meat+Event+Package" target="_blank">Request Quote</a>
+    </div>
+  </div>
+
+  <div class="events-benefits">
+    <div class="benefit-item reveal">
+      <div class="benefit-icon">💰</div>
+      <div>
+        <div class="benefit-title">Affordable Pricing</div>
+        <div class="benefit-desc">Diskon khusus untuk pesanan skala besar yang menyesuaikan dengan anggaran acaramu.</div>
+      </div>
+    </div>
+    <div class="benefit-item reveal">
+      <div class="benefit-icon">🎨</div>
+      <div>
+        <div class="benefit-title">Fully Customizable</div>
+        <div class="benefit-desc">Kombinasikan saus dan ukuran porsi untuk mencocokkan dengan skala tamu undangan.</div>
+      </div>
+    </div>
+    <div class="benefit-item reveal">
+      <div class="benefit-icon">⚡</div>
+      <div>
+        <div class="benefit-title">Fast & Reliable</div>
+        <div class="benefit-desc">Ketepatan waktu adalah prioritas. Kentang tiba dalam keadaan segar dan hangat.</div>
+      </div>
+    </div>
+    <div class="benefit-item reveal">
+      <div class="benefit-icon">📦</div>
+      <div>
+        <div class="benefit-title">Event Packaging</div>
+        <div class="benefit-desc">Opsi kemasan khusus untuk menjaga estetika hidangan saat dibagikan ke tamu.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-info reveal">
+    <span class="section-label">Get In Touch</span>
+    <h2 class="contact-tagline">Ready to <span style="color:var(--fry-red)">Order?</span> Let's Talk! 🍟</h2>
+    <p class="contact-text">Hubungi kami melalui WhatsApp untuk respons tercepat, atau isi formulir agar kami bisa menyusun penawaran khusus untuk acaramu.</p>
+
+    <div class="contact-methods">
+      <a class="contact-method" href="https://wa.me/628111407273" target="_blank">
+        <span class="method-icon">💬</span>
+        <div>
+          <div style="font-size:.75rem;color:var(--smoke);font-weight:800;text-transform:uppercase;letter-spacing:.5px">WhatsApp (Fastest)</div>
+          <div>+62 811-1407-273</div>
+        </div>
+      </a>
+      <a class="contact-method" href="https://instagram.com/fryday.indonesia" target="_blank">
+        <span class="method-icon">📸</span>
+        <div>
+          <div style="font-size:.75rem;color:var(--smoke);font-weight:800;text-transform:uppercase;letter-spacing:.5px">Instagram</div>
+          <div>@fryday.indonesia</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-form reveal">
+    <h3>Request a Quote</h3>
+    <p>Beritahu kami detail acaramu dan kami akan siapkan penawaran terbaik.</p>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="e.g. Budi Santoso">
+      </div>
+      <div class="form-group">
+        <label>Phone / WA</label>
+        <input type="tel" placeholder="+62 8xx-xxxx-xxxx">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Event Date</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label>Package Type</label>
+        <select>
+          <option value="">Select package</option>
+          <option>Classic Event Package</option>
+          <option>Fries & Chick Event Package</option>
+          <option>BBQ Meat Event Package</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Estimated Guests (Pax)</label>
+      <input type="number" placeholder="e.g. 150">
+    </div>
+
+    <div class="form-group">
+      <label>Additional Notes</label>
+      <textarea placeholder="Event location, specific delivery times, or flavor preferences..."></textarea>
+    </div>
+
+    <button class="btn-submit" onclick="submitForm()">🍟 Send via WhatsApp</button>
+  </div>
+</section>
+
+<footer>
+  <a href="#">
+    <img src="./asset/logo no bg.png" alt="Fryday Logo" class="footer-logo-img">
+  </a>
+  <div class="footer-copy">© 2026 Fryday. All rights reserved. Made with 🍟 in Indonesia.</div>
+  <div class="footer-links">
+    <a href="#products">Menu</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<a class="wa-sticky" href="https://wa.me/628111407273?text=Hi+Fryday!+I'd+like+to+order" target="_blank" aria-label="Chat on WhatsApp">
+  <span class="wa-tooltip">Order on WhatsApp</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Hamburger
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    const cta = document.querySelector('.nav-cta');
+    const open = links.style.display === 'flex';
+    links.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--fry-cream);padding:1.5rem 6vw;gap:1rem;border-bottom:2px solid rgba(42,23,17,.1);z-index:899';
+    if (cta) cta.style.display = open ? 'none' : 'none';
+  }
+
+  // Form submit
+  function submitForm() {
+    const name = document.querySelector('input[placeholder*="Budi"]')?.value || '';
+    const phone = document.querySelector('input[type="tel"]')?.value || '';
+    const date = document.querySelector('input[type="date"]')?.value || '';
+    const packageType = document.querySelector('select')?.value || '';
+    const paxCount = document.querySelector('input[type="number"]')?.value || '';
+    const notes = document.querySelector('textarea')?.value || '';
+
+    const msg = `Hi Fryday! I'd like to request a quote 🍟\n\nName: ${name}\nPhone: ${phone}\nEvent Date: ${date}\nPackage Type: ${packageType}\nEstimated Pax: ${paxCount}\nNotes: ${notes}`;
+    window.open(`https://wa.me/628111407273?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+</script>
+</body>
+</html>

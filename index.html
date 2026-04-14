@@ -508,23 +508,34 @@
     50%       { box-shadow: 0 8px 40px rgba(37,211,102,.8); }
   }
 
-  /* ── RESPONSIVE ── */
+ /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     #hero { 
       grid-template-columns: 1fr; 
       text-align: center; 
-      padding-top: 100px; /* DIPERBAIKI: Agar teks tidak tertimpa navbar di HP */
+      padding-top: 100px; 
     }
     .hero-text { padding: 5vw 6vw 2vw; }
     .hero-sub { margin: 0 auto 2rem; }
     .hero-btns { justify-content: center; }
-    .hero-visual { padding: 2rem 6vw 5vw; }
     
-    .hero-logo-large { 
-      width: min(320px, 75vw); /* DIPERBAIKI: Logo hero mengecil otomatis di HP */
+    .hero-visual { 
+      padding: 2rem 6vw 5vw; 
+      flex-direction: column; /* Mengubah arah susunan menjadi vertikal */
+      gap: 2rem; /* Memberi jarak antara logo dan chips */
     }
     
-    .hero-stat-chips { right: 10%; }
+    .hero-logo-large { 
+      width: min(280px, 75vw); /* Memastikan logo tidak terlalu mendominasi */
+    }
+    
+    .hero-stat-chips { 
+      position: relative; /* Mencabut absolute positioning */
+      bottom: auto; 
+      right: auto; 
+      align-items: center; /* Menengahkan posisi chips */
+    }
+    
     #contact { grid-template-columns: 1fr; }
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }

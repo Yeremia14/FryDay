@@ -31,34 +31,24 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 900;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 6vw;
-    height: 70px; /* Navigasi 70px */
+    height: 70px;
     background: var(--fry-cream);
     border-bottom: 2px solid rgba(42, 23, 17, 0.1);
   }
 
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
   
-  .nav-logo-img {
-    height: 70px; /* DIPERBAIKI: Jangan melebihi tinggi nav (70px) */
-    width: auto;
-    object-fit: contain;
-  }
+  .nav-logo-img { height: 70px; width: auto; object-fit: contain; }
 
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
     color: var(--fry-dark); font-weight: 800; font-size: .9rem;
     text-decoration: none; letter-spacing: .5px; text-transform: uppercase;
-    position: relative; padding-bottom: 2px;
-    transition: color .2s;
+    position: relative; padding-bottom: 2px; transition: color .2s;
   }
   .nav-links a::after {
     content: ''; position: absolute; bottom: 0; left: 0;
-    width: 0; height: 2px; background: var(--fry-red);
-    transition: width .3s;
+    width: 0; height: 2px; background: var(--fry-red); transition: width .3s;
   }
   .nav-links a:hover { color: var(--fry-red); }
   .nav-links a:hover::after { width: 100%; }
@@ -67,8 +57,7 @@
     background: var(--fry-red); color: var(--white);
     font-weight: 900; font-size: .85rem; padding: .5rem 1.2rem;
     border-radius: 50px; text-decoration: none; text-transform: uppercase;
-    letter-spacing: .5px;
-    transition: background .2s, transform .2s;
+    letter-spacing: .5px; transition: background .2s, transform .2s;
   }
   .nav-cta:hover { background: var(--fry-accent); transform: scale(1.05); }
 
@@ -77,15 +66,9 @@
 
   /* ── HERO ── */
   #hero {
-    min-height: 100vh;
-    padding-top: 70px;
-    background: var(--fry-cream);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 0;
-    position: relative;
-    overflow: hidden;
+    min-height: 100vh; padding-top: 70px; background: var(--fry-cream);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    gap: 0; position: relative; overflow: hidden;
   }
 
   .hero-bg-pattern {
@@ -95,36 +78,22 @@
       radial-gradient(circle at 80% 20%, rgba(42, 23, 17, 0.03) 0%, transparent 45%);
   }
 
-  .hero-text {
-    position: relative; z-index: 2;
-    padding: 6vw 5vw 6vw 8vw;
-  }
+  .hero-text { position: relative; z-index: 2; padding: 6vw 5vw 6vw 8vw; }
 
   .hero-title {
-    font-family: 'Boogaloo', cursive;
-    font-size: clamp(2.8rem, 5.5vw, 5.5rem);
-    line-height: 1.05;
-    color: var(--fry-red);
-    margin-bottom: 1.25rem;
-    text-transform: uppercase;
-    animation: fadeUp .6s ease both;
+    font-family: 'Boogaloo', cursive; font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+    line-height: 1.05; color: var(--fry-red); margin-bottom: 1.25rem;
+    text-transform: uppercase; animation: fadeUp .6s ease both;
   }
   .hero-title .accent { color: var(--fry-dark); }
 
   .hero-sub {
-    font-size: clamp(1rem, 1.8vw, 1.25rem);
-    color: var(--smoke);
-    font-weight: 600;
-    line-height: 1.6;
-    max-width: 480px;
-    margin-bottom: 2.5rem;
-    animation: fadeUp .6s .1s ease both;
+    font-size: clamp(1rem, 1.8vw, 1.25rem); color: var(--smoke);
+    font-weight: 600; line-height: 1.6; max-width: 480px;
+    margin-bottom: 2.5rem; animation: fadeUp .6s .1s ease both;
   }
 
-  .hero-btns {
-    display: flex; gap: 1rem; flex-wrap: wrap;
-    animation: fadeUp .6s .2s ease both;
-  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp .6s .2s ease both; }
 
   .btn-primary {
     display: inline-flex; align-items: center; gap: .5rem;
@@ -149,31 +118,21 @@
   .hero-visual {
     position: relative; z-index: 2;
     display: flex; justify-content: center; align-items: center;
-    padding: 4rem 4vw;
-    animation: fadeUp .7s .1s ease both;
+    padding: 4rem 4vw; animation: fadeUp .7s .1s ease both;
   }
 
   .hero-logo-large {
-    width: min(500px, 85vw); 
-    height: auto;
+    width: min(500px, 85vw); height: auto;
     filter: drop-shadow(0 24px 48px rgba(42, 23, 17, 0.15));
     animation: float 4s ease-in-out infinite;
   }
 
-  .hero-stat-chips {
-    position: absolute;
-    bottom: 2rem; right: -1rem;
-    display: flex; flex-direction: column; gap: .6rem;
-  }
+  .hero-stat-chips { position: absolute; bottom: 2rem; right: -1rem; display: flex; flex-direction: column; gap: .6rem; }
 
   .stat-chip {
-    background: var(--white);
-    border: 2px solid var(--fry-dark);
-    border-radius: 50px;
-    padding: .5rem 1rem;
-    color: var(--fry-dark); font-size: .8rem; font-weight: 800;
-    white-space: nowrap;
-    display: flex; align-items: center; gap: .4rem;
+    background: var(--white); border: 2px solid var(--fry-dark); border-radius: 50px;
+    padding: .5rem 1rem; color: var(--fry-dark); font-size: .8rem; font-weight: 800;
+    white-space: nowrap; display: flex; align-items: center; gap: .4rem;
     box-shadow: 4px 4px 0 rgba(42, 23, 17, 1);
   }
   .stat-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--fry-red); }
@@ -181,361 +140,209 @@
   /* ── SECTION SHARED ── */
   section { padding: 6rem 6vw; }
   .section-label {
-    display: inline-block;
-    font-size: .75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 3px;
-    color: var(--fry-red);
-    margin-bottom: .75rem;
+    display: inline-block; font-size: .75rem; font-weight: 900; text-transform: uppercase;
+    letter-spacing: 3px; color: var(--fry-red); margin-bottom: .75rem;
   }
   .section-title {
-    font-family: 'Boogaloo', cursive;
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1.1;
-    color: var(--fry-dark);
-    margin-bottom: 1rem;
-    text-transform: uppercase;
+    font-family: 'Boogaloo', cursive; font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1; color: var(--fry-dark); margin-bottom: 1rem; text-transform: uppercase;
   }
-  .section-sub {
-    font-size: 1.05rem; color: var(--smoke);
-    max-width: 560px; line-height: 1.7;
-    margin-bottom: 3rem;
-  }
+  .section-sub { font-size: 1.05rem; color: var(--smoke); max-width: 560px; line-height: 1.7; margin-bottom: 3rem; }
 
   /* ── PRODUCTS ── */
   #products { background: var(--white); }
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap: 2rem;
-    margin-top: 1rem;
-  }
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem; margin-top: 1rem; }
 
   .product-card {
-    border-radius: 24px;
-    overflow: hidden;
-    background: var(--fry-cream);
+    border-radius: 24px; overflow: hidden; background: var(--fry-cream);
     border: 2px solid rgba(42, 23, 17, 0.1);
-    transition: transform .3s, border-color .3s, box-shadow .3s;
-    cursor: pointer;
+    transition: transform .3s, border-color .3s, box-shadow .3s; cursor: pointer;
   }
   .product-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--fry-red);
+    transform: translateY(-8px); border-color: var(--fry-red);
     box-shadow: 0 20px 48px rgba(222, 53, 53, 0.15);
   }
 
   .product-img {
-    width: 100%; aspect-ratio: 4/3;
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-    overflow: hidden;
-    background: #F5EFEB;
-    border-bottom: 2px solid rgba(42, 23, 17, 0.1);
+    width: 100%; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; background: #F5EFEB; border-bottom: 2px solid rgba(42, 23, 17, 0.1);
   }
-
-  .product-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
+  .product-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 0; }
 
   .product-badge {
-    position: absolute; top: 12px; right: 12px;
-    background: var(--fry-dark); color: var(--white);
+    position: absolute; top: 12px; right: 12px; background: var(--fry-dark); color: var(--white);
     font-size: .7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;
-    padding: .3rem .7rem; border-radius: 50px;
-    z-index: 1;
+    padding: .3rem .7rem; border-radius: 50px; z-index: 1;
   }
   .product-badge.hot { background: var(--fry-red); }
 
   .product-info { padding: 1.4rem 1.5rem 1.6rem; }
-  .product-name {
-    font-family: 'Boogaloo', cursive;
-    font-size: 1.5rem; color: var(--fry-dark);
-    margin-bottom: .35rem;
-    text-transform: uppercase;
-  }
+  .product-name { font-family: 'Boogaloo', cursive; font-size: 1.5rem; color: var(--fry-dark); margin-bottom: .35rem; text-transform: uppercase; }
   .product-desc { font-size: .9rem; color: var(--smoke); line-height: 1.6; margin-bottom: 1rem; }
   .product-footer { display: flex; align-items: center; justify-content: flex-end; }
   .product-order {
-    background: var(--fry-dark); color: var(--white);
-    font-size: .8rem; font-weight: 900; text-transform: uppercase; letter-spacing: .5px;
-    padding: .45rem 1rem; border-radius: 50px;
-    text-decoration: none;
+    background: var(--fry-dark); color: var(--white); font-size: .8rem; font-weight: 900; text-transform: uppercase;
+    letter-spacing: .5px; padding: .45rem 1rem; border-radius: 50px; text-decoration: none;
     transition: background .2s, transform .15s;
   }
   .product-order:hover { background: var(--fry-red); transform: scale(1.05); }
 
   /* ── EVENTS ── */
-  #events {
-    background: var(--fry-dark);
-    position: relative; overflow: hidden;
-  }
+  #events { background: var(--fry-dark); position: relative; overflow: hidden; }
   #events .section-title { color: var(--fry-cream); }
   #events .section-sub { color: rgba(252, 249, 245, 0.7); }
 
-  .packages-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    position: relative; z-index: 1;
-  }
+  .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; position: relative; z-index: 1; }
 
   .package-card {
-    border-radius: 24px;
-    border: 2px solid rgba(252, 249, 245, 0.15);
-    padding: 2rem 1.75rem;
-    background: rgba(252, 249, 245, 0.03);
-    transition: border-color .3s, background .3s, transform .3s;
-    position: relative;
-    overflow: hidden;
+    border-radius: 24px; border: 2px solid rgba(252, 249, 245, 0.15); padding: 2rem 1.75rem;
+    background: rgba(252, 249, 245, 0.03); transition: border-color .3s, background .3s, transform .3s;
+    position: relative; overflow: hidden;
   }
-  .package-card.featured {
-    border-color: var(--fry-red);
-    background: rgba(222, 53, 53, 0.08);
-  }
-  .package-card:hover {
-    border-color: var(--fry-red);
-    transform: translateY(-6px);
-  }
+  .package-card.featured { border-color: var(--fry-red); background: rgba(222, 53, 53, 0.08); }
+  .package-card:hover { border-color: var(--fry-red); transform: translateY(-6px); }
 
   .package-featured-tag {
-    position: absolute; top: 0; right: 0;
-    background: var(--fry-red); color: var(--white);
+    position: absolute; top: 0; right: 0; background: var(--fry-red); color: var(--white);
     font-size: .7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;
-    padding: .35rem .9rem;
-    border-radius: 0 22px 0 16px;
+    padding: .35rem .9rem; border-radius: 0 22px 0 16px;
   }
 
-  .package-pax {
-    font-family: 'Boogaloo', cursive;
-    font-size: 2rem;
-    color: var(--fry-cream); 
-    line-height: 1.1;
-    margin-bottom: .25rem;
-  }
+  .package-pax { font-family: 'Boogaloo', cursive; font-size: 2rem; color: var(--fry-cream); line-height: 1.1; margin-bottom: .25rem; }
   .package-label { color: rgba(252, 249, 245, 0.6); font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.25rem; }
 
   .package-features { list-style: none; margin-bottom: 1.75rem; }
-  .package-features li {
-    color: rgba(252, 249, 245, 0.85); font-size: .9rem;
-    padding: .45rem 0;
-    border-bottom: 1px solid rgba(252, 249, 245, 0.1);
-    display: flex; align-items: flex-start; gap: .6rem;
-  }
+  .package-features li { color: rgba(252, 249, 245, 0.85); font-size: .9rem; padding: .45rem 0; border-bottom: 1px solid rgba(252, 249, 245, 0.1); display: flex; align-items: flex-start; gap: .6rem; }
   .package-features li::before { content: '✓'; color: var(--fry-red); font-weight: 900; }
 
   .btn-quote {
-    display: block; text-align: center;
-    background: var(--fry-cream); color: var(--fry-dark);
-    font-weight: 900; font-size: .9rem; padding: .8rem 1.5rem;
-    border-radius: 50px; text-decoration: none;
+    display: block; text-align: center; background: var(--fry-cream); color: var(--fry-dark);
+    font-weight: 900; font-size: .9rem; padding: .8rem 1.5rem; border-radius: 50px; text-decoration: none;
     transition: background .2s, transform .2s;
   }
   .btn-quote:hover { background: #fff; transform: scale(1.03); }
   .package-card.featured .btn-quote { background: var(--fry-red); color: var(--white); }
   .package-card.featured .btn-quote:hover { background: var(--fry-accent); }
 
-  .events-benefits {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-top: 4rem;
-    position: relative; z-index: 1;
-  }
-  .benefit-item {
-    display: flex; align-items: flex-start; gap: 1rem;
-    color: rgba(252, 249, 245, 0.8);
-  }
-  .benefit-icon {
-    font-size: 2rem;
-    flex-shrink: 0;
-    width: 54px; height: 54px;
-    background: rgba(222, 53, 53, 0.15);
-    border: 1px solid rgba(222, 53, 53, 0.3);
-    border-radius: 16px;
-    display: flex; align-items: center; justify-content: center;
-  }
+  .events-benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 4rem; position: relative; z-index: 1; }
+  .benefit-item { display: flex; align-items: flex-start; gap: 1rem; color: rgba(252, 249, 245, 0.8); }
+  .benefit-icon { font-size: 2rem; flex-shrink: 0; width: 54px; height: 54px; background: rgba(222, 53, 53, 0.15); border: 1px solid rgba(222, 53, 53, 0.3); border-radius: 16px; display: flex; align-items: center; justify-content: center; }
   .benefit-title { font-weight: 800; font-size: .95rem; color: var(--fry-cream); margin-bottom: .2rem; }
   .benefit-desc { font-size: .85rem; line-height: 1.5; }
 
   /* ── CONTACT ── */
-  #contact {
-    background: var(--white);
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 5vw; align-items: start;
-  }
-
+  #contact { background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: start; }
   .contact-info { padding-top: 1rem; }
-  .contact-tagline {
-    font-family: 'Boogaloo', cursive;
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    color: var(--fry-dark); line-height: 1.2;
-    margin-bottom: 1.25rem;
-    text-transform: uppercase;
-  }
+  .contact-tagline { font-family: 'Boogaloo', cursive; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--fry-dark); line-height: 1.2; margin-bottom: 1.25rem; text-transform: uppercase; }
   .contact-tagline span { color: var(--fry-red); }
-
   .contact-text { font-size: .95rem; color: var(--smoke); line-height: 1.7; margin-bottom: 2rem; }
 
   .contact-methods { display: flex; flex-direction: column; gap: .85rem; }
-  .contact-method {
-    display: flex; align-items: center; gap: .75rem;
-    color: var(--fry-dark); text-decoration: none;
-    font-weight: 800; font-size: .95rem;
-    padding: .9rem 1.25rem;
-    border-radius: 16px;
-    border: 2px solid var(--fry-cream);
-    background: var(--fry-cream);
-    transition: border-color .2s, background .2s;
-  }
+  .contact-method { display: flex; align-items: center; gap: .75rem; color: var(--fry-dark); text-decoration: none; font-weight: 800; font-size: .95rem; padding: .9rem 1.25rem; border-radius: 16px; border: 2px solid var(--fry-cream); background: var(--fry-cream); transition: border-color .2s, background .2s; }
   .contact-method:hover { border-color: var(--fry-red); background: #FFF3F3; }
   .contact-method .method-icon { font-size: 1.5rem; }
 
-  .contact-form {
-    background: var(--fry-dark);
-    border-radius: 28px;
-    padding: 2.5rem 2.25rem;
-  }
-  .contact-form h3 {
-    font-family: 'Boogaloo', cursive;
-    font-size: 1.6rem; color: var(--fry-cream);
-    margin-bottom: .35rem;
-    text-transform: uppercase;
-  }
+  .contact-form { background: var(--fry-dark); border-radius: 28px; padding: 2.5rem 2.25rem; }
+  .contact-form h3 { font-family: 'Boogaloo', cursive; font-size: 1.6rem; color: var(--fry-cream); margin-bottom: .35rem; text-transform: uppercase; }
   .contact-form p { color: rgba(252, 249, 245, 0.6); font-size: .85rem; margin-bottom: 1.75rem; }
-
   .form-group { margin-bottom: 1.2rem; }
-  .form-group label {
-    display: block; font-weight: 800; font-size: .8rem;
-    text-transform: uppercase; letter-spacing: .8px;
-    color: rgba(252, 249, 245, 0.7); margin-bottom: .5rem;
-  }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 14px;
-    color: var(--white);
-    font-family: 'Nunito', sans-serif;
-    font-size: .95rem; font-weight: 600;
-    padding: .8rem 1.1rem;
-    transition: border-color .2s, background .2s;
-    outline: none;
-  }
-  .form-group input::placeholder,
-  .form-group textarea::placeholder { color: rgba(255, 255, 255, 0.3); }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: var(--fry-red);
-    background: rgba(222, 53, 53, 0.05);
-  }
+  .form-group label { display: block; font-weight: 800; font-size: .8rem; text-transform: uppercase; letter-spacing: .8px; color: rgba(252, 249, 245, 0.7); margin-bottom: .5rem; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 14px; color: var(--white); font-family: 'Nunito', sans-serif; font-size: .95rem; font-weight: 600; padding: .8rem 1.1rem; transition: border-color .2s, background .2s; outline: none; }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255, 255, 255, 0.3); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--fry-red); background: rgba(222, 53, 53, 0.05); }
   .form-group select option { background: var(--fry-dark); }
   .form-group textarea { resize: vertical; min-height: 90px; }
-
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  .btn-submit {
-    width: 100%;
-    background: var(--fry-red); color: var(--white);
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900; font-size: 1rem;
-    padding: .9rem;
-    border: none; border-radius: 50px;
-    cursor: pointer;
-    transition: background .2s, transform .2s;
-    margin-top: .5rem;
-    letter-spacing: .5px;
-    text-transform: uppercase;
-  }
+  .btn-submit { width: 100%; background: var(--fry-red); color: var(--white); font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem; padding: .9rem; border: none; border-radius: 50px; cursor: pointer; transition: background .2s, transform .2s; margin-top: .5rem; letter-spacing: .5px; text-transform: uppercase; }
   .btn-submit:hover { background: var(--fry-accent); transform: translateY(-2px); }
 
   /* ── FOOTER ── */
-  footer {
-    background: var(--fry-cream);
-    padding: 3rem 6vw;
-    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
-    gap: 1.5rem;
-    border-top: 2px solid rgba(42, 23, 17, 0.1);
-  }
-  .footer-logo-img { height: 50px; width: auto; } /* DIPERBAIKI */
+  footer { background: var(--fry-cream); padding: 3rem 6vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; border-top: 2px solid rgba(42, 23, 17, 0.1); }
+  .footer-logo-img { height: 50px; width: auto; }
   .footer-copy { color: var(--smoke); font-size: .85rem; font-weight: 600; }
   .footer-links { display: flex; gap: 1.5rem; }
   .footer-links a { color: var(--fry-dark); text-decoration: none; font-size: .85rem; font-weight: 800; transition: color .2s; }
   .footer-links a:hover { color: var(--fry-red); }
 
   /* ── STICKY WHATSAPP ── */
-  .wa-sticky {
-    position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
-    width: 60px; height: 60px;
-    background: #25D366;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 8px 24px rgba(37,211,102,.5);
-    text-decoration: none;
-    animation: pulse-wa 2.5s ease-in-out infinite;
-    transition: transform .2s;
-  }
+  .wa-sticky { position: fixed; bottom: 2rem; right: 2rem; z-index: 998; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37,211,102,.5); text-decoration: none; animation: pulse-wa 2.5s ease-in-out infinite; transition: transform .2s; }
   .wa-sticky:hover { transform: scale(1.12); }
   .wa-sticky svg { width: 32px; height: 32px; fill: #fff; }
-  .wa-tooltip {
-    position: absolute; right: 72px;
-    background: var(--fry-dark); color: #fff;
-    font-weight: 800; font-size: .8rem;
-    padding: .45rem .9rem; border-radius: 50px;
-    white-space: nowrap;
-    opacity: 0; pointer-events: none;
-    transition: opacity .2s;
-  }
+  .wa-tooltip { position: absolute; right: 72px; background: var(--fry-dark); color: #fff; font-weight: 800; font-size: .8rem; padding: .45rem .9rem; border-radius: 50px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .2s; }
   .wa-sticky:hover .wa-tooltip { opacity: 1; }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
+  /* ── TAMBAHAN FITUR CHATBOT (UI) ── */
+  .chatbot-toggle {
+    position: fixed; bottom: 6.5rem; right: 2rem; z-index: 999;
+    width: 60px; height: 60px;
+    background: var(--fry-dark); color: var(--white);
+    border: none; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 24px rgba(42, 23, 17, 0.3);
+    cursor: pointer; transition: transform .2s, background .2s;
   }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-18px); }
-  }
-  @keyframes pulse-wa {
-    0%, 100% { box-shadow: 0 8px 24px rgba(37,211,102,.5); }
-    50%       { box-shadow: 0 8px 40px rgba(37,211,102,.8); }
-  }
+  .chatbot-toggle:hover { transform: scale(1.1); background: var(--fry-red); }
+  .chatbot-toggle svg { width: 28px; height: 28px; fill: currentColor; }
 
- /* ── RESPONSIVE ── */
+  .chatbot-window {
+    position: fixed; bottom: 11rem; right: 2rem; z-index: 1000;
+    width: 360px; max-width: calc(100vw - 4rem); height: 500px;
+    background: var(--white); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 12px 40px rgba(42, 23, 17, 0.2);
+    display: flex; flex-direction: column;
+    transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform-origin: bottom right;
+  }
+  .chatbot-window.active { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+  
+  .chatbot-header {
+    background: var(--fry-red); color: var(--white);
+    padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between;
+  }
+  .chatbot-header h4 { font-family: 'Boogaloo', cursive; font-size: 1.4rem; letter-spacing: 1px; margin: 0; text-transform: uppercase; }
+  .chatbot-header button { background: transparent; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; line-height: 1; padding: 0; margin-top: -4px; transition: transform .2s; }
+  .chatbot-header button:hover { transform: scale(1.2); }
+  
+  .chatbot-body {
+    flex: 1; padding: 1.25rem; overflow-y: auto; background: var(--fry-cream);
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .chat-message { max-width: 85%; padding: .75rem 1rem; border-radius: 16px; font-size: .9rem; line-height: 1.5; font-weight: 600; }
+  .chat-message.bot { background: var(--white); color: var(--fry-dark); align-self: flex-start; border-bottom-left-radius: 4px; box-shadow: 0 2px 8px rgba(42, 23, 17, 0.05); border: 1px solid rgba(42, 23, 17, 0.05); }
+  .chat-message.user { background: var(--fry-dark); color: var(--white); align-self: flex-end; border-bottom-right-radius: 4px; box-shadow: 0 2px 8px rgba(42, 23, 17, 0.1); }
+  
+  .chatbot-footer {
+    padding: 1rem; background: var(--white); border-top: 1px solid rgba(42, 23, 17, 0.1);
+    display: flex; gap: .5rem; align-items: center;
+  }
+  .chatbot-footer input {
+    flex: 1; padding: .75rem 1.25rem; border-radius: 50px; border: 2px solid rgba(42, 23, 17, 0.1);
+    font-family: 'Nunito', sans-serif; font-size: .9rem; outline: none; transition: border-color .2s;
+  }
+  .chatbot-footer input:focus { border-color: var(--fry-red); }
+  .chatbot-footer button {
+    background: var(--fry-red); color: var(--white); border: none; border-radius: 50%;
+    width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background .2s, transform .2s; flex-shrink: 0;
+  }
+  .chatbot-footer button:hover { background: var(--fry-accent); transform: scale(1.05); }
+  .chatbot-footer button svg { width: 20px; height: 20px; fill: currentColor; margin-left: -2px; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+  @keyframes pulse-wa { 0%, 100% { box-shadow: 0 8px 24px rgba(37,211,102,.5); } 50% { box-shadow: 0 8px 40px rgba(37,211,102,.8); } }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    #hero { 
-      grid-template-columns: 1fr; 
-      text-align: center; 
-      padding-top: 100px; 
-    }
+    #hero { grid-template-columns: 1fr; text-align: center; padding-top: 100px; }
     .hero-text { padding: 5vw 6vw 2vw; }
     .hero-sub { margin: 0 auto 2rem; }
     .hero-btns { justify-content: center; }
-    
-    .hero-visual { 
-      padding: 2rem 6vw 5vw; 
-      flex-direction: column; /* Mengubah arah susunan menjadi vertikal */
-      gap: 2rem; /* Memberi jarak antara logo dan chips */
-    }
-    
-    .hero-logo-large { 
-      width: min(280px, 75vw); /* Memastikan logo tidak terlalu mendominasi */
-    }
-    
-    .hero-stat-chips { 
-      position: relative; /* Mencabut absolute positioning */
-      bottom: auto; 
-      right: auto; 
-      align-items: center; /* Menengahkan posisi chips */
-    }
-    
+    .hero-visual { padding: 2rem 6vw 5vw; flex-direction: column; gap: 2rem; }
+    .hero-logo-large { width: min(280px, 75vw); }
+    .hero-stat-chips { position: relative; bottom: auto; right: auto; align-items: center; }
     #contact { grid-template-columns: 1fr; }
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
@@ -546,18 +353,14 @@
     .form-row { grid-template-columns: 1fr; }
     footer { flex-direction: column; align-items: flex-start; }
     .package-pax { font-size: 2.2rem; } 
+    /* Responsif Chatbot untuk Mobile */
+    .chatbot-window { bottom: 0; right: 0; width: 100vw; height: 100dvh; max-width: 100vw; border-radius: 0; }
+    .chatbot-toggle { bottom: 6.5rem; right: 1.5rem; }
   }
 
   /* ── SCROLL REVEAL ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity .7s ease, transform .7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
@@ -820,6 +623,28 @@
   </svg>
 </a>
 
+<button class="chatbot-toggle" id="chatbotToggle" aria-label="Buka Chatbot">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+</button>
+
+<div class="chatbot-window" id="chatbotWindow">
+  <div class="chatbot-header">
+    <h4>Fryday Assistant</h4>
+    <button id="chatbotClose">&times;</button>
+  </div>
+  <div class="chatbot-body" id="chatbotBody">
+    <div class="chat-message bot">
+      <p>Halo! Ada yang bisa dibantu? Tanya seputar menu, pesanan, atau cek informasi nilai kalori sajian Fryday di sini ya! 🍟</p>
+    </div>
+  </div>
+  <div class="chatbot-footer">
+    <input type="text" id="chatInput" placeholder="Tanya kalori Fries & Chick...">
+    <button id="chatSend">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
@@ -854,6 +679,150 @@
     const msg = `Hi Fryday! I'd like to request a quote 🍟\n\nName: ${name}\nPhone: ${phone}\nEvent Date: ${date}\nPackage Type: ${packageType}\nEstimated Pax: ${paxCount}\nNotes: ${notes}`;
     window.open(`https://wa.me/628111407273?text=${encodeURIComponent(msg)}`, '_blank');
   }
+
+  /* ── TAMBAHAN FITUR CHATBOT (JS) ── */
+  const chatbotToggle = document.getElementById('chatbotToggle');
+  const chatbotWindow = document.getElementById('chatbotWindow');
+  const chatbotClose = document.getElementById('chatbotClose');
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+  const chatbotBody = document.getElementById('chatbotBody');
+
+  // Buka & Tutup Chat Window
+  chatbotToggle.addEventListener('click', () => {
+    chatbotWindow.classList.add('active');
+    chatInput.focus();
+  });
+
+  chatbotClose.addEventListener('click', () => {
+    chatbotWindow.classList.remove('active');
+  });
+
+  // Fungsi menambah bubble chat
+  function appendMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('chat-message', sender);
+    msgDiv.innerHTML = `<p>${text}</p>`;
+    chatbotBody.appendChild(msgDiv);
+    chatbotBody.scrollTop = chatbotBody.scrollHeight; // Auto scroll ke bawah
+  }
+
+  // 1. BUAT BUKU PANDUAN (KNOWLEDGE BASE) YANG BISA DI-UPDATE
+  // BUKU PANDUAN (KNOWLEDGE BASE) FRYDAY
+  // 1. BUKU PANDUAN DARI SISTEM POS FRYDAY
+  let dataMenuFryday = `
+  PROFIL: Fryday adalah restoran cepat saji asal Indonesia (berpusat di Bandung) yang fokus menyajikan olahan kentang premium dan aneka pelengkapnya.
+  LOKASI: Jl Pasirkaliki No 23 Bandung
+
+    PERTANYAAN ANEH: Asistent Fryday dapat Membantu 1. Jumlah kalori 2. Harga Total Pesanan 3. Lokasi 4. Daftar Menu
+  
+  MENU MAKANAN & HARGA (Estimasi Kalori):
+  - Loaded Fries: Rp 25.000 (Kalori: est. 500 kkal). Kentang goreng renyah dengan topping melimpah.
+  - Chicken Wings: Rp 20.000 (Kalori: est. 400 kkal). Sayap ayam berbumbu yang digoreng garing.
+  - Onion Rings: Rp 15.000 (Kalori: est. 300 kkal). Bawang bombay balut tepung renyah.
+  - Baked Mozzarella Potato: Rp 25.000 (Kalori: est. 450 kkal). Kentang panggang dengan lelehan keju mozzarella.
+  - Fryday Combo Platter: Rp 65.000 (Kalori: est. 1200 kkal). Porsi besar berisi kombinasi kentang, sosis, dan pelengkap lainnya. Cocok untuk sharing!
+  
+  MENU MINUMAN & HARGA:
+  - Ice Tea: Rp 10.000
+  - Coca Cola: Rp 10.000
+  - Orange Juice: Rp 15.000
+  - Air Mineral: Rp 7.000
+  `;
+
+  // 2. FUNGSI MENGIRIM PESAN
+  // 2. FUNGSI MENGIRIM PESAN
+  async function handleSend() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    // Tampilkan pesan user
+    appendMessage(text, 'user');
+    chatInput.value = '';
+
+    // Tampilkan indikator "Typing..."
+    const typingId = 'typing-' + Date.now();
+    const typingDiv = document.createElement('div');
+    typingDiv.classList.add('chat-message', 'bot');
+    typingDiv.id = typingId;
+    typingDiv.innerHTML = `<p><em>Menyiapkan informasi...</em> 🍟</p>`;
+    chatbotBody.appendChild(typingDiv);
+    chatbotBody.scrollTop = chatbotBody.scrollHeight;
+
+    // DI SINI KUNCI PERUBAHANNYA:
+    // Tembak ke URL file jembatan yang ada di server POS kamu
+    const API_URL = 'https://posfryday.my.id/chat-bridge.php'; 
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        // API Key tidak perlu dikirim dari sini lagi, biarkan server PHP yang mengurusnya
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            {
+              role: "system",
+              content: `Kamu adalah asisten virtual resmi restoran Fryday.
+              
+              Gunakan HANYA informasi dari buku panduan berikut untuk menjawab pertanyaan pelanggan:
+              ${dataMenuFryday}
+              
+              ATURAN MENJAWAB:
+              1. Jika pelanggan bertanya tentang menu, harga, atau kalori, lihat daftar di atas.
+              2. JANGAN mengarang menu yang tidak ada di daftar buku panduan.
+              3. JIKA PELANGGAN INGIN MEMESAN: Hitung total harganya dengan benar. Setelah itu, arahkan mereka untuk mengonfirmasi pesanan ke WhatsApp Kasir Fryday. 
+                 - Berikan nomor: +62 811-1407-273
+                 - Berikan link ini agar bisa langsung diklik: https://wa.me/628111407273
+              4. Gunakan bahasa Indonesia yang ramah, asyik, dan luwes layaknya customer service masa kini.
+              5. Selalu akhiri jawabanmu dengan emoji kentang goreng 🍟.
+              6. JIKA PELANGGAN INGIN BERTANYA LOKASI: Ambil dari data lokasi fryday di atas.
+              7. JIKA PELANGGAN BERTANYA TIDAK SESUAI: Tolong arahkan dari data Pertanyaan aneh.
+              `
+            },
+            {
+              role: "user",
+              content: text
+            }
+          ],
+          temperature: 0.5,
+          max_tokens: 250
+        })
+      });
+
+      const data = await response.json();
+      
+      // Hapus indikator typing
+      document.getElementById(typingId).remove();
+
+      if (!response.ok) {
+        console.error("Detail Error:", data);
+        let pesanError = data.error?.message || "Terjadi kesalahan server.";
+        appendMessage(`Oops, API Error: ${pesanError}`, 'bot');
+        return;
+      }
+
+      if (data.choices && data.choices.length > 0) {
+        const botReply = data.choices[0].message.content;
+        appendMessage(botReply, 'bot');
+      } else {
+        appendMessage("Waduh, asisten sedang kebingungan nih. Coba tanya lagi ya! 🍟", 'bot');
+      }
+
+    } catch (error) {
+      console.error("Error Koneksi:", error);
+      document.getElementById(typingId).remove();
+      appendMessage("Maaf, koneksi ke server sedang terputus. 🍟", 'bot');
+    }
+  }
+
+  // Trigger klik atau Enter key
+  chatSend.addEventListener('click', handleSend);
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') handleSend();
+  });
 </script>
 </body>
 </html>
